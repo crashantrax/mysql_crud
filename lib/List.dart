@@ -19,7 +19,6 @@ class AllUsers extends StatefulWidget {
 class _AllUsersState extends State<AllUsers> {
   var _isLoading = false;
   var data;
-  var tof, name, ps, adress, phone;
 
   void onCreatedAccount() {
     var alert = new AlertDialog(
@@ -113,6 +112,16 @@ class _AllUsersState extends State<AllUsers> {
       print("NO DATA LOADED");
     }
   }
+  
+  void textField(){
+    new TextField(
+      decoration: InputDecoration(
+      labelText: "TodoList : ",
+      hintText: "type here "),
+      controller: _listnoteController,
+    );
+  }
+    
 
   @override
   void initState() {
@@ -133,15 +142,12 @@ class _AllUsersState extends State<AllUsers> {
                   itemCount: this.data != null ? this.data.length : 0,
                   itemBuilder: (context, i) {
                     final v = this.data[i];
-                    return new Card(
+                    return 
+                    // textField,
+                    new Card(
                       child: new FlatButton(
                         child: new Column(children: <Widget>[
-                          new TextField(
-                            decoration: InputDecoration(
-                                labelText: "TodoList : ",
-                                hintText: "type here "),
-                            controller: _listnoteController,
-                          ),
+                          
                           Row(
                             children: <Widget>[
                               Column(
