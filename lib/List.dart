@@ -53,8 +53,6 @@ class _AllUsersState extends State<AllUsers> {
     //print(_adresseController.text);
   }
 
-  
-
   Future<String> _ShowDialog(String msg) async {
     return showDialog<String>(
       context: context,
@@ -96,8 +94,7 @@ class _AllUsersState extends State<AllUsers> {
   }
 
   _getData() async {
-    final url =
-        "http://webonlinetutorial.ga/FlutterTraining/SelectAllList.php";
+    final url = "http://webonlinetutorial.ga/FlutterTraining/SelectAllList.php";
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final map = json.decode(response.body);
@@ -112,16 +109,14 @@ class _AllUsersState extends State<AllUsers> {
       print("NO DATA LOADED");
     }
   }
-  
-  void textField(){
+
+  void textField() {
     new TextField(
-      decoration: InputDecoration(
-      labelText: "TodoList : ",
-      hintText: "type here "),
+      decoration:
+          InputDecoration(labelText: "TodoList : ", hintText: "type here "),
       controller: _listnoteController,
     );
   }
-    
 
   @override
   void initState() {
@@ -134,26 +129,34 @@ class _AllUsersState extends State<AllUsers> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: new Scaffold(
-        body: 
-        new Center(
+        body: new Center(
           child: !_isLoading
               ? new CircularProgressIndicator()
               : new ListView.builder(
                   itemCount: this.data != null ? this.data.length : 0,
                   itemBuilder: (context, i) {
                     final v = this.data[i];
-                    return 
-                    // textField,
-                    new Card(
+                    return
+                        // textField,
+                        new Card(
                       child: new FlatButton(
                         child: new Column(children: <Widget>[
-                          
+                          // new TextField(
+                          //   decoration: InputDecoration(
+                          //       labelText: "TodoList : ",
+                          //       hintText: "type here "),
+                          //   controller: _listnoteController,
+                          // ),
                           Row(
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
                                   new Padding(
-                                    padding: const EdgeInsets.only(top: 20.0, bottom: 8.0, left: 10.0, right: 8.0),
+                                    padding: const EdgeInsets.only(
+                                        top: 20.0,
+                                        bottom: 8.0,
+                                        left: 10.0,
+                                        right: 8.0),
                                     child: Text(v["listnote"],
                                         style: new TextStyle(
                                             fontSize: 24.0,
@@ -164,16 +167,16 @@ class _AllUsersState extends State<AllUsers> {
                               ),
                             ],
                           ),
-                          new RaisedButton.icon(
-                            onPressed: () {
-                              _addData();
-                            },
-                            icon: Icon(Icons.add),
-                            label: Text(
-                              "Register",
-                              textScaleFactor: 1.0,
-                            ),
-                          ),
+                          // new RaisedButton.icon(
+                          //   onPressed: () {
+                          //     _addData();
+                          //   },
+                          //   icon: Icon(Icons.add),
+                          //   label: Text(
+                          //     "Register",
+                          //     textScaleFactor: 1.0,
+                          //   ),
+                          // ),
                         ]),
                         onPressed: () {
                           print(v["id"]);
