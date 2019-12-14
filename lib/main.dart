@@ -28,13 +28,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void onCreatedAccount() {
     var alert = new AlertDialog(
@@ -42,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       content: new SingleChildScrollView(
         child: new ListBody(
           children: <Widget>[
-            new Text('You have created a new Account.'),
+            new Text('You have created a new Note!.'),
           ],
         ),
       ),
@@ -93,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               icon: Icon(Icons.add),
               label: Text(
-                "Register",
+                "Add",
                 textScaleFactor: 1.0,
               ),
             ),

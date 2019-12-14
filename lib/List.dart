@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:mysql_crud/edit.dart';
 
 // void main() => runApp(AllUsers());
 void main() => runApp(new AllUsers());
@@ -12,6 +13,8 @@ void main() => runApp(new AllUsers());
 // }
 
 class AllUsers extends StatefulWidget {
+  var idList;
+  AllUsers({Key key, this.idList}) : super(key: key);
   @override
   _AllUsersState createState() => new _AllUsersState();
 }
@@ -125,6 +128,22 @@ class _AllUsersState extends State<AllUsers> {
     _getData();
   }
 
+  void _editData() async {
+    var url = "http://webonlinetutorial.ga/FlutterTraining/ModifyList.php";
+
+    var response = await http.post(url, body: {
+      "listnote": _listnoteController.text,
+    });
+    if (response.statusCode == 200) {
+      _ShowDialog("Updated Successfully");
+    } else {
+      _ShowDialog("Updated Failer");
+    }
+
+    //onEditedAccount();
+    //print(_adresseController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -157,11 +176,31 @@ class _AllUsersState extends State<AllUsers> {
                                         bottom: 8.0,
                                         left: 10.0,
                                         right: 8.0),
-                                    child: Text(v["listnote"],
-                                        style: new TextStyle(
-                                            fontSize: 24.0,
-                                            color: Colors.blue,
-                                            fontWeight: FontWeight.bold)),
+                                    child: Text(
+                                      v["listnote"],
+                                      style: new TextStyle(
+                                          fontSize: 24.0,
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 50.0),
+                                    child: new RaisedButton(
+                                      child: const Text(
+                                        'Edit',
+                                        textScaleFactor: 1.0,
+                                      ),
+                                      onPressed: () {
+                                        var route = new MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              new Update(
+                                            idList: widget.idList,
+                                          ),
+                                        );
+                                        Navigator.of(context).push(route);
+                                      },
+                                    ),
                                   ),
                                 ],
                               ),
