@@ -29,7 +29,7 @@ class _AllUsersState extends State<AllUsers> {
       content: new SingleChildScrollView(
         child: new ListBody(
           children: <Widget>[
-            new Text('You have created a new Account.'),
+            new Text('You have created a new Note!.'),
           ],
         ),
       ),

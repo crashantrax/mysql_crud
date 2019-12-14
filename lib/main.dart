@@ -75,10 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'MYSQL CRUD | HTTP REST API',
             ),
-            new TextField(
-              decoration: InputDecoration(
-                  labelText: "TodoList : ", hintText: "type here "),
-              controller: _listnoteController,
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              child: new TextField(
+                decoration: InputDecoration(
+                    labelText: "TodoList : ", hintText: "type here "),
+                controller: _listnoteController,
+              ),
             ),
             new RaisedButton.icon(
               onPressed: () {
